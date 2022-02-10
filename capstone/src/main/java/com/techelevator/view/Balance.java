@@ -12,13 +12,13 @@ public class Balance {
         return balance;
     }
 
-    public double addMoney (double funds) {
-        balance += funds;
-        return balance;
+    public double addMoney (double moneyAdded) {
+        balance += moneyAdded;
+        return getBalance();
     }
 
     public double returnChange(double funds) {
         balance -= funds;
-        return balance;
+        return getBalance();
     }
 }

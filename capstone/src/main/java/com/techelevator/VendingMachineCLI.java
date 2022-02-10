@@ -1,13 +1,11 @@
 package com.techelevator;
 
-import com.techelevator.view.Balance;
-import com.techelevator.view.Goods;
-import com.techelevator.view.Menu;
-import com.techelevator.view.Sellable;
+import com.techelevator.view.*;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
@@ -20,6 +18,14 @@ public class VendingMachineCLI {
 	private static final String PURCHASE_MENU_OPTION_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
 	private static final String[] PURCHASE_MENU_OPTIONS ={PURCHASE_MENU_OPTION_FEED_MONEY, PURCHASE_MENU_OPTION_SELECT_PRODUCT, PURCHASE_MENU_OPTION_FINISH_TRANSACTION};
+	private static final String DOLLAR = "1.00";
+	private static final String TWO_DOLLARS = "2.00";
+	private static final String FIVE_DOLLARS = "5.00";
+	private static final String TEN_DOLLARS = "10.00";
+	private static final String[] FEED_MONEY_MENU_OPTIONS = {DOLLAR, TWO_DOLLARS, FIVE_DOLLARS, TEN_DOLLARS};
+
+
+	private VendingMachine vendingMachine = new VendingMachine();
 
 	private Menu menu;
 
@@ -28,14 +34,12 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
-		Goods goods = new Goods("Stackers", 1.45);
 
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
-
 				String vendingItems = "";
 
 				try (Scanner inputFile = new Scanner(new File("vendingmachine.csv"))) {
@@ -47,17 +51,30 @@ public class VendingMachineCLI {
 					e.printStackTrace();
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				Menu purchaseMenu = new Menu(System.in, System.out);
-				Balance startingBalance = new Balance(0.00);
-				System.out.println("Current Money Provided: " + startingBalance.getBalance());
-				String purchaseMenuChoice = (String) purchaseMenu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+				//Menu purchaseMenu = new Menu(System.in, System.out);
 
-				if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
+				while (true) {
+					//Balance startingBalance = new Balance(0.00);
 
-					double funds = 5.00;
-					startingBalance.addMoney(funds);
+					System.out.println("Current Money Provided: " + vendingMachine.getVendingBalance().getBalance());
+					String purchaseMenuChoice = (String) this.menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+
+					if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
+						System.out.print("How much money would you like to add? ");
+						String feedMoneyMenuChoice = (String) this.menu.getChoiceFromOptions(FEED_MONEY_MENU_OPTIONS);
+
+						vendingMachine.getVendingBalance().addMoney(Double.parseDouble(feedMoneyMenuChoice));
+
+					} else if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
+
+						System.out.println("Enter items code: ");
+						Scanner input = new Scanner(System.in);
+						String itemCode = input.next();
+
+					} else {
+						break;
+					}
 				}
-
 			} else {
 				System.exit(0);
 			}
