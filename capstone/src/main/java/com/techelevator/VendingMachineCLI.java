@@ -16,6 +16,10 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_EXIT = "Exit";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_EXIT};
+	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";
+	private static final String PURCHASE_MENU_OPTION_SELECT_PRODUCT = "Select Product";
+	private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
+	private static final String[] PURCHASE_MENU_OPTIONS ={PURCHASE_MENU_OPTION_FEED_MONEY, PURCHASE_MENU_OPTION_SELECT_PRODUCT, PURCHASE_MENU_OPTION_FINISH_TRANSACTION};
 
 	private Menu menu;
 
@@ -46,6 +50,13 @@ public class VendingMachineCLI {
 				Menu purchaseMenu = new Menu(System.in, System.out);
 				Balance startingBalance = new Balance(0.00);
 				System.out.println("Current Money Provided: " + startingBalance.getBalance());
+				String purchaseMenuChoice = (String) purchaseMenu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+
+				if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
+
+					double funds = 5.00;
+					startingBalance.addMoney(funds);
+				}
 
 			} else {
 				System.exit(0);
