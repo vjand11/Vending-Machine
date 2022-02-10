@@ -3,7 +3,7 @@ package com.techelevator.view;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Goods {
+public class Goods implements Sellable {
     private String name;
     private double price;
 
