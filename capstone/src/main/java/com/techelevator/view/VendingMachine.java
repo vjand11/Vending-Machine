@@ -7,6 +7,7 @@ import java.util.*;
 public class VendingMachine {
 
     private final File inputFile = new File("vendingmachine.csv");
+
     private Map<String, Double> goodsMap = new HashMap<>();
 
     private Balance vendingBalance = new Balance(0.00);
@@ -20,7 +21,7 @@ public class VendingMachine {
     }
 
 
-    public String[] vendingFile() {
+    public String[] vendingMachineItems() {
         String vendingItems = "";
         try (Scanner file = new Scanner(inputFile)) {
             while (file.hasNextLine()) {

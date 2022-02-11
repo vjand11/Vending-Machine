@@ -24,10 +24,6 @@ public class VendingMachineCLI {
     private static final String FIVE_DOLLARS = "5.00";
     private static final String TEN_DOLLARS = "10.00";
     private static final String[] FEED_MONEY_MENU_OPTIONS = {DOLLAR, TWO_DOLLARS, FIVE_DOLLARS, TEN_DOLLARS};
-   // private static final String[] ITEM_CODES = {"A1 - Potato Crisps", "A2 - Stackers", "A3 - Grain Waves",
-    //        "A4 - Cloud Popcorn", "B1 - Moonpie", "B2 - Cowtales", "B3 - Wonka Bar", "B4 - Crunchie", "C1 - Cola",
-      //      "C2 - Dr. Salt", "C3 - Mountain Melter", "C4 - Heavy", "D1 - U-Chews", "D2 - Little League Chew", "D3 - Chiclets", "D4 - Triplemint"};
-
 
     private VendingMachine vendingMachine = new VendingMachine();
 
@@ -43,18 +39,9 @@ public class VendingMachineCLI {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-                vendingMachine.vendingFile();
+                vendingMachine.vendingMachineItems();
                 // display vending machine items
-//                String vendingItems = "";
-//
-//                try (Scanner inputFile = new Scanner(new File("vendingmachine.csv"))) {
-//                    while (inputFile.hasNextLine()) {
-//                        vendingItems = inputFile.nextLine();
-//                        System.out.println(Arrays.toString(vendingItems.split("\\|")));
-//                    }
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
+
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 
                 while (true) {
