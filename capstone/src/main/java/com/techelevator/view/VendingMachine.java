@@ -1,7 +1,6 @@
 package com.techelevator.view;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.sql.Array;
 import java.util.*;
 
@@ -21,13 +20,15 @@ public class VendingMachine implements Sellable {
         this.vendingBalance = vendingBalance;
     }
     // TODO - How to implement array? Do we need an array?
-    public String[] vendingMachineItems() {
+    public void vendingMachineItems() {
         String vendingItems = "";
         try (Scanner file = new Scanner(inputFile)) {
             while (file.hasNextLine()) {
                 vendingItems = file.nextLine();
                 //String[] vendingArray = new String[] {vendingItems};
-                System.out.println(Arrays.toString(vendingItems.split("\\|")));
+                String[] vendingArray = vendingItems.split("\\|");
+                System.out.println(vendingArray[0] + " " + vendingArray[1] + " " + vendingArray[2] + " " + vendingArray[3]);
+                //System.out.println(Arrays.toString(vendingItems.split("\\|")));
 //                for (int i = 0; i <= vendingArray.length; i++) {
 //                    System.out.println(vendingArray);
 //                }
@@ -35,7 +36,6 @@ public class VendingMachine implements Sellable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return vendingItems.split("\\|");
     }
 
     public Map<String, Double> getGoodsMap() {
