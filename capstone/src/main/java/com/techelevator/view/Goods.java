@@ -19,7 +19,14 @@ public class Goods implements Sellable {
     }
 
     public Goods() {
+    }
 
+    public String getSlot() {
+        return slot;
+    }
+
+    public String getSound() {
+        return sound;
     }
 
     public String getName() {

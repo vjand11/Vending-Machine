@@ -61,10 +61,9 @@ public class VendingMachineCLI {
                         vendingMachine.vendingMachineItems();
 
                         System.out.print("Enter items code: ");
-                        //String itemCodeChoice = (String) this.menu.getChoiceFromOptions(ITEM_CODES);
                         Scanner userInput = new Scanner(System.in);
                         String itemSelected = userInput.nextLine();
-                        vendingMachine.selectItem(itemSelected);
+                        vendingMachine.selectItem();
 
                     } else {
                         break;

@@ -21,19 +21,16 @@ public class VendingMachine implements Sellable {
     public void setVendingBalance(Balance vendingBalance) {
         this.vendingBalance = vendingBalance;
     }
+
     // TODO - How to implement array? Do we need an array?
     public void vendingMachineItems() {
         String vendingItems = "";
         try (Scanner file = new Scanner(inputFile)) {
             while (file.hasNextLine()) {
                 vendingItems = file.nextLine();
-                //String[] vendingArray = new String[] {vendingItems};
+
                 String[] vendingArray = vendingItems.split("\\|");
                 System.out.println(vendingArray[0] + " " + vendingArray[1] + " $" + vendingArray[2] + " " + vendingGoods.getInventory() + " available");
-                //System.out.println(Arrays.toString(vendingItems.split("\\|")));
-//                for (int i = 0; i <= vendingArray.length; i++) {
-//                    System.out.println(vendingArray);
-//                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,11 +57,18 @@ public class VendingMachine implements Sellable {
         return goodsMap;
     }
 
-    public boolean selectItem(String itemCode) {
-        if (itemCode.contains("A1")) {
-            return goodsMap.containsKey("Potato Crisps");
-        } else return false;
-    }
+//    public void selectItem() {
+//        Sellable[] vendingItemsForSale = new Sellable[]{new Gum(), new Candy(), new Drinks(), new Chips()};
+//        for (Sellable sellable : vendingItemsForSale) {
+//            String sound = sellable.getSound();
+//            String slot = sellable.getSlot();
+//
+//            if (slot.contains("A1")) {
+//                System.out.println(sound);
+//
+//            }
+//        }
+//    }
 
     @Override
     public String getName() {
@@ -74,6 +78,21 @@ public class VendingMachine implements Sellable {
     @Override
     public double getPrice() {
         return 0;
+    }
+
+    @Override
+    public String getSlot() {
+        return null;
+    }
+
+    @Override
+    public int getInventory() {
+        return 0;
+    }
+
+    @Override
+    public String getSound() {
+        return null;
     }
 
 }

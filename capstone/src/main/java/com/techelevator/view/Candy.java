@@ -10,4 +10,7 @@ public class Candy extends Goods implements Sellable {
     }
 
 
+    public Candy() {
+
+    }
 }
