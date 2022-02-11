@@ -10,8 +10,6 @@ public class VendingMachine {
 
     private Balance vendingBalance = new Balance(0.00);
 
-    private Item vendingGoods = new Item();
-
     private Map<String, Item> inventory = new HashMap<>();
 
     public Balance getVendingBalance() {
@@ -22,7 +20,11 @@ public class VendingMachine {
         this.vendingBalance = vendingBalance;
     }
 
-    public void vendingMachineItems() {
+    public Map<String, Item> getInventory() {
+        return inventory;
+    }
+
+    public void loadInventory() {
         String vendingItems = "";
         try (Scanner file = new Scanner(inputFile)) {
             while (file.hasNextLine()) {
@@ -49,26 +51,29 @@ public class VendingMachine {
     }
 
     public void displayItems() {
-        String vendingItems = "";
-        try (Scanner file = new Scanner(inputFile)) {
-            while (file.hasNextLine()) {
-                vendingItems = file.nextLine();
 
-                String[] parts = vendingItems.split("\\|");
-                System.out.println(parts[0] + " " + parts[1] + " $" + parts[2] + " " + vendingGoods.getQuantity() + " Available");
-
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        for (Map.Entry<String, Item> pair : inventory.entrySet()) {
+            System.out.println(pair.getKey() + " " + pair.getValue().getName() + " $" + pair.getValue().getPrice() + " " + pair.getValue().getQuantity() + " available");
         }
     }
 
     public void purchaseItem(String slotSelected) {
-
+        /*
+        try to get item
+        if does not exist thrown exception
+        do we have enough to sell more?
+            if no throw an exception
+        if yes, decrement inventory item.dispense and play sound
+         */
         if (inventory.containsKey(slotSelected)) {
-
+            if (inventory.get(slotSelected).getQuantity() > 0) {
+                inventory.get(slotSelected).dispense();
+                //inventory.get(slotSelected).
+            } else {
+                throw new IllegalArgumentException("SOLD OUT");
+            }
+        } else {
+            throw new IllegalArgumentException("Item does not exist");
         }
     }
-
 }

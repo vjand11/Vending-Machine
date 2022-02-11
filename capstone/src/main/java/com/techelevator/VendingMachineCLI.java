@@ -30,6 +30,8 @@ public class VendingMachineCLI {
 
     public void run() {
 
+        vendingMachine.loadInventory();
+
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
             System.out.println();
@@ -59,7 +61,6 @@ public class VendingMachineCLI {
                         Scanner userInput = new Scanner(System.in);
                         String itemSelected = userInput.nextLine();
                         vendingMachine.purchaseItem(itemSelected);
-
 
                     } else {
                         break;

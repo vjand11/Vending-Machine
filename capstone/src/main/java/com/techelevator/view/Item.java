@@ -36,5 +36,8 @@ public class Item {
         return price;
     }
 
+    public void dispense() {
+        quantity -= 1;
+    }
 
 }
