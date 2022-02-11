@@ -2,11 +2,6 @@ package com.techelevator;
 
 import com.techelevator.view.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
@@ -63,7 +58,6 @@ public class VendingMachineCLI {
                         System.out.print("Enter items code: ");
                         Scanner userInput = new Scanner(System.in);
                         String itemSelected = userInput.nextLine();
-                        vendingMachine.selectItem();
 
                     } else {
                         break;
