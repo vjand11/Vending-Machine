@@ -1,9 +1,10 @@
 package com.techelevator.view;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.*;
 
-public class VendingMachine implements Sellable{
+public class VendingMachine implements Sellable {
 
     private final File inputFile = new File("vendingmachine.csv");
 
@@ -11,7 +12,9 @@ public class VendingMachine implements Sellable{
 
     private Balance vendingBalance = new Balance(0.00);
 
-    private Goods vendingGoods = new Goods();
+    private Item vendingGoods = new Item();
+
+    private Map<String, Item> inventory = new HashMap<>();
 
     public Balance getVendingBalance() {
         return vendingBalance;
@@ -28,18 +31,18 @@ public class VendingMachine implements Sellable{
             while (file.hasNextLine()) {
                 vendingItems = file.nextLine();
 
-                String[] vendingArray = vendingItems.split("\\|");
-                vendingGoods.getSlot().add(vendingArray[0]);
-                vendingGoods.getName().add(vendingArray[1]);
-                vendingGoods.getPrice().add(Double.parseDouble(vendingArray[2]));
-                System.out.println(vendingArray[0] + " " + vendingArray[1] + " $" + vendingArray[2] + " " + vendingGoods.getInventory() + " available");
+                String[] parts = vendingItems.split("\\|");
+                if (parts[3].equalsIgnoreCase("chips")) {
+                    Item item = new Chips(parts[0], parts[1], new BigDecimal(parts[2]));
+                    inventory.put(parts[0], item);
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public Map<String, Double> getGoodsMap() {
+    public Map<String, String[]> getGoodsMap() {
 //        goodsMap.put("Potato Crisps", 3.05);
 //        goodsMap.put("Stackers", 1.45);
 //        goodsMap.put("Grain Waves", 2.75);
@@ -57,7 +60,7 @@ public class VendingMachine implements Sellable{
 //        goodsMap.put("Chiclets", .75);
 //        goodsMap.put("Triplemint", .75);
 
-        goodsMap.put(vendingGoods.getSlot(), vendingGoods.getName());
+        goodsMap.put();
 
         return goodsMap;
     }

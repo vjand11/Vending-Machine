@@ -1,14 +1,13 @@
 package com.techelevator.view;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 
-public class Candy extends Goods implements Sellable {
+public class Candy extends Item {
 
-    public Candy(List<String> name, List<Double> price, List<String> slot, int inventory, String sound) {
-        super(name, price, slot, inventory, "Munch Munch, Yum!");
+    public Candy(String slot, int inventory, String name, BigDecimal price, String sound) {
+        super(slot, inventory, name, price, sound);
     }
-
 
     public Candy() {
 

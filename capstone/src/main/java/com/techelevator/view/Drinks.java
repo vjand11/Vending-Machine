@@ -1,11 +1,12 @@
 package com.techelevator.view;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-public class Drinks extends Goods implements Sellable {
+public class Drinks extends Item {
 
-    public Drinks(List<String> name, List<Double> price, List<String> slot, int inventory, String sound) {
-        super(name, price, slot, inventory, "Glug Glug, Yum!");
+    public Drinks(String slot, int inventory, String name, BigDecimal price, String sound) {
+        super(slot, inventory, name, price, sound);
     }
 
     public Drinks() {
