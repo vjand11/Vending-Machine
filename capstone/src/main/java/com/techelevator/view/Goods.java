@@ -18,6 +18,10 @@ public class Goods implements Sellable {
         this.sound = sound;
     }
 
+    public Goods() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -26,7 +30,11 @@ public class Goods implements Sellable {
         return price;
     }
 
-//    public String vendingFile() {
+    public int getInventory() {
+        return inventory;
+    }
+
+    //    public String vendingFile() {
 //
 ////        String vendingItems = "";
 ////        try (Scanner inputFile = new Scanner("vendingmachine.csv")) {

@@ -12,6 +12,8 @@ public class VendingMachine implements Sellable {
 
     private Balance vendingBalance = new Balance(0.00);
 
+    private Goods vendingGoods = new Goods();
+
     public Balance getVendingBalance() {
         return vendingBalance;
     }
@@ -27,7 +29,7 @@ public class VendingMachine implements Sellable {
                 vendingItems = file.nextLine();
                 //String[] vendingArray = new String[] {vendingItems};
                 String[] vendingArray = vendingItems.split("\\|");
-                System.out.println(vendingArray[0] + " " + vendingArray[1] + " " + vendingArray[2] + " " + vendingArray[3]);
+                System.out.println(vendingArray[0] + " " + vendingArray[1] + " $" + vendingArray[2] + " " + vendingGoods.getInventory() + " available");
                 //System.out.println(Arrays.toString(vendingItems.split("\\|")));
 //                for (int i = 0; i <= vendingArray.length; i++) {
 //                    System.out.println(vendingArray);
