@@ -9,7 +9,7 @@ public class Goods implements Sellable {
     private String name;
     private double price;
     private String sound;
-
+    // TODO - Can we use Goods instead of an array? If not, how do we implement this?
     public Goods(String name, double price, String slot, int inventory, String sound) {
         this.name = name;
         this.price = price;

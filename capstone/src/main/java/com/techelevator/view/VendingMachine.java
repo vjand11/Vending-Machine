@@ -2,9 +2,10 @@ package com.techelevator.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Array;
 import java.util.*;
 
-public class VendingMachine {
+public class VendingMachine implements Sellable {
 
     private final File inputFile = new File("vendingmachine.csv");
 
@@ -19,24 +20,23 @@ public class VendingMachine {
     public void setVendingBalance(Balance vendingBalance) {
         this.vendingBalance = vendingBalance;
     }
-
-
+    // TODO - How to implement array? Do we need an array?
     public String[] vendingMachineItems() {
         String vendingItems = "";
         try (Scanner file = new Scanner(inputFile)) {
             while (file.hasNextLine()) {
                 vendingItems = file.nextLine();
+                //String[] vendingArray = new String[] {vendingItems};
                 System.out.println(Arrays.toString(vendingItems.split("\\|")));
+//                for (int i = 0; i <= vendingArray.length; i++) {
+//                    System.out.println(vendingArray);
+//                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return vendingItems.split("\\|");
     }
-
-    // create map of item name and value
-
-    //create method that accepts slot code and return the map at that string
 
     public Map<String, Double> getGoodsMap() {
         goodsMap.put("Potato Crisps", 3.05);
@@ -62,6 +62,16 @@ public class VendingMachine {
         if (itemCode.contains("A1")) {
             return goodsMap.containsKey("Potato Crisps");
         } else return false;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
     }
 
 }

@@ -37,6 +37,7 @@ public class VendingMachineCLI {
 
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+            System.out.println();
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
                 vendingMachine.vendingMachineItems();
@@ -57,7 +58,9 @@ public class VendingMachineCLI {
 
                     } else if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 
-                        System.out.println("Enter items code: ");
+                        vendingMachine.vendingMachineItems();
+
+                        System.out.print("Enter items code: ");
                         //String itemCodeChoice = (String) this.menu.getChoiceFromOptions(ITEM_CODES);
                         Scanner userInput = new Scanner(System.in);
                         String itemSelected = userInput.nextLine();
