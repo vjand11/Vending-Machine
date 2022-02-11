@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Candy extends Item {
 
-    public Candy(String slot, int inventory, String name, BigDecimal price, String sound) {
-        super(slot, inventory, name, price, sound);
+    private String sound;
+
+    public Candy(String slot, String name, BigDecimal price) {
+        super(slot, 5, name, price);
     }
 
-    public Candy() {
-
+    public String getSound() {
+        return "Chew Chew, Yum!";
     }
 }

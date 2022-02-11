@@ -35,7 +35,7 @@ public class VendingMachineCLI {
             System.out.println();
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-                vendingMachine.vendingMachineItems();
+                vendingMachine.displayItems();
                 // display vending machine items
 
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
@@ -53,11 +53,13 @@ public class VendingMachineCLI {
 
                     } else if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 
-                        vendingMachine.vendingMachineItems();
+                        vendingMachine.displayItems();
 
-                        System.out.print("Enter items code: ");
+                        System.out.print("Enter item code: ");
                         Scanner userInput = new Scanner(System.in);
                         String itemSelected = userInput.nextLine();
+                        vendingMachine.purchaseItem(itemSelected);
+
 
                     } else {
                         break;

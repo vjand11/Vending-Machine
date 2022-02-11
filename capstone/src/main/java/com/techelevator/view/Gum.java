@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Gum extends Item {
 
-    public Gum(String slot, int inventory, String name, BigDecimal price, String sound) {
-        super(slot, inventory, name, price, sound);
+    private String sound;
+
+    public Gum(String slot, String name, BigDecimal price) {
+        super(slot, 5, name, price);
     }
 
-    public Gum() {
-
+    public String getSound() {
+        return "Chew Chew, Yum!";
     }
 }

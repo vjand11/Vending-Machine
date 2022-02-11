@@ -1,19 +1,17 @@
 package com.techelevator.view;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Item {
     private String slot;
-    private int inventory = 5;
+    private int quantity = 5;
     private String name;
     private BigDecimal price = BigDecimal.ZERO;
 
 
-    public Item(String slot, int inventory, String name, BigDecimal price,) {
+    public Item(String slot, int quantity, String name, BigDecimal price) {
         this.slot = slot;
-        this.inventory = inventory;
+        this.quantity = quantity;
         this.name = name;
         this.price = price;
     }
@@ -26,8 +24,8 @@ public class Item {
         return slot;
     }
 
-    public int getInventory() {
-        return inventory;
+    public int getQuantity() {
+        return quantity;
     }
 
     public String getName() {
@@ -38,14 +36,5 @@ public class Item {
         return price;
     }
 
-    public String getSound() {
-        return sound;
-    }
-
-    public void callSlot(String itemsSelected) {
-        if (itemsSelected.contains("A1")) {
-            System.out.println("Potato Crisps");
-        }
-    }
 
 }
