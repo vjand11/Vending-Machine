@@ -3,6 +3,7 @@ package com.techelevator;
 import com.techelevator.view.*;
 
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
@@ -45,7 +46,7 @@ public class VendingMachineCLI {
 
                 while (true) {
 
-                    System.out.println("Current Money Provided: " + vendingMachine.getVendingBalance().getBalance());
+                    System.out.println("Current Money Provided: $" + vendingMachine.getVendingBalance().getBalance());
                     String purchaseMenuChoice = (String) this.menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 
                     if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
@@ -64,6 +65,10 @@ public class VendingMachineCLI {
                         vendingMachine.purchaseItem(itemSelected);
 
                     } else {
+                        BigDecimal currentBalance = vendingMachine.getVendingBalance().getBalance();
+                        System.out.println("Your current balance is " + vendingMachine.getVendingBalance().getBalance());
+                        System.out.println("We are returning your change: ");
+                        System.out.println("Your new balance is: " + vendingMachine.getVendingBalance().returnChange(currentBalance));
                         break;
                     }
                 }
