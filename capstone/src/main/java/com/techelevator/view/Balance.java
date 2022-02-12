@@ -14,15 +14,19 @@ public class Balance {
         return balance;
     }
 
-    public BigDecimal addMoney (BigDecimal moneyAdded) {
+    public BigDecimal addMoney(BigDecimal moneyAdded) {
         balance = balance.add(moneyAdded);
         return getBalance();
     }
 
     public BigDecimal updateBalance(BigDecimal price) {
-        balance = balance.subtract(price);
-        return getBalance();
+        if (balance.compareTo(price) >= 0) {
+            balance = balance.subtract(price);
+            return getBalance();
+        } else
+        throw new IllegalArgumentException("You do not have enough money for purchase.");
     }
+
     public BigDecimal returnChange(BigDecimal remainingBalance) {
         balance = updateBalance(remainingBalance);
         return getBalance();
