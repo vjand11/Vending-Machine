@@ -8,10 +8,8 @@ import java.util.Map;
 
 public class Chips extends Item {
 
-    private String sound;
-
     public Chips(String slot, String name, BigDecimal price) {
-        super(slot, 5, name, price);
+        super(slot, 5, name, price, "Crunch Crunch, Yum!");
     }
 
     public String getSound() {

@@ -5,10 +5,8 @@ import java.util.List;
 
 public class Candy extends Item {
 
-    private String sound;
-
     public Candy(String slot, String name, BigDecimal price) {
-        super(slot, 5, name, price);
+        super(slot, 5, name, price,"Chew Chew, Yum!");
     }
 
     public String getSound() {

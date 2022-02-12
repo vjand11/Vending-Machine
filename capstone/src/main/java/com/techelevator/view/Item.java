@@ -7,13 +7,15 @@ public class Item {
     private int quantity = 5;
     private String name;
     private BigDecimal price = BigDecimal.ZERO;
+    String sound;
 
 
-    public Item(String slot, int quantity, String name, BigDecimal price) {
+    public Item(String slot, int quantity, String name, BigDecimal price, String sound) {
         this.slot = slot;
         this.quantity = quantity;
         this.name = name;
         this.price = price;
+        this.sound = sound;
     }
 
     public Item() {
@@ -34,6 +36,10 @@ public class Item {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public  String getSound() {
+        return sound;
     }
 
     public void dispense() {

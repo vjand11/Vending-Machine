@@ -68,8 +68,11 @@ public class VendingMachine {
         if (inventory.containsKey(slotSelected)) {
             if (inventory.get(slotSelected).getQuantity() > 0) {
                 inventory.get(slotSelected).dispense();
-                //inventory.get(slotSelected).
+                String noise = inventory.get(slotSelected).getSound();
                 getVendingBalance().returnChange(inventory.get(slotSelected).getPrice());
+                System.out.println(noise);
+                System.out.println("You have selected: " + inventory.get(slotSelected).getName() + " which costs: $" + inventory.get(slotSelected).getPrice());
+                System.out.println("Your remaining money is: $" + getVendingBalance().returnChange(inventory.get(slotSelected).getPrice()));
             } else {
                 throw new IllegalArgumentException("SOLD OUT");
             }
