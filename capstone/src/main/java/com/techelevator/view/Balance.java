@@ -19,9 +19,14 @@ public class Balance {
         return getBalance();
     }
 
-    public BigDecimal returnChange(BigDecimal price) {
+    public BigDecimal updateBalance(BigDecimal price) {
         balance = balance.subtract(price);
         return getBalance();
     }
+    public BigDecimal returnChange(BigDecimal remainingBalance) {
+        balance = updateBalance(remainingBalance);
+        return getBalance();
+    }
+
 
 }
