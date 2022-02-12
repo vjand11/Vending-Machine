@@ -8,7 +8,7 @@ public class VendingMachine {
 
     private final File inputFile = new File("vendingmachine.csv");
 
-    private Balance vendingBalance = new Balance(0.00);
+    private Balance vendingBalance = new Balance(BigDecimal.ZERO);
 
     private Map<String, Item> inventory = new HashMap<>();
 
@@ -69,6 +69,7 @@ public class VendingMachine {
             if (inventory.get(slotSelected).getQuantity() > 0) {
                 inventory.get(slotSelected).dispense();
                 //inventory.get(slotSelected).
+                getVendingBalance().returnChange(inventory.get(slotSelected).getPrice());
             } else {
                 throw new IllegalArgumentException("SOLD OUT");
             }

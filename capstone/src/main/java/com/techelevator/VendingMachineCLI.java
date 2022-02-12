@@ -2,6 +2,7 @@ package com.techelevator;
 
 import com.techelevator.view.*;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
@@ -51,7 +52,7 @@ public class VendingMachineCLI {
                         System.out.print("How much money would you like to add? ");
                         String feedMoneyMenuChoice = (String) this.menu.getChoiceFromOptions(FEED_MONEY_MENU_OPTIONS);
 
-                        vendingMachine.getVendingBalance().addMoney(Double.parseDouble(feedMoneyMenuChoice));
+                        vendingMachine.getVendingBalance().addMoney(BigDecimal.valueOf(Double.parseDouble(feedMoneyMenuChoice)));
 
                     } else if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 

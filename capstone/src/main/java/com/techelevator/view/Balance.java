@@ -1,24 +1,27 @@
 package com.techelevator.view;
 
+import java.math.BigDecimal;
+
 public class Balance {
 
-    private double balance;
+    private BigDecimal balance;
 
-    public Balance(double balance) {
+    public Balance(BigDecimal balance) {
         this.balance = balance;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public double addMoney (double moneyAdded) {
-        balance += moneyAdded;
+    public BigDecimal addMoney (BigDecimal moneyAdded) {
+        balance = balance.add(moneyAdded);
         return getBalance();
     }
 
-    public double returnChange(double funds) {
-        balance -= funds;
+    public BigDecimal returnChange(BigDecimal price) {
+        balance = balance.subtract(price);
         return getBalance();
     }
+
 }
