@@ -62,7 +62,7 @@ public class VendingMachineCLI {
 
                         System.out.print("Enter item code: ");
                         Scanner userInput = new Scanner(System.in);
-                        String itemSelected = userInput.nextLine();
+                        String itemSelected = userInput.nextLine().toUpperCase();
                         vendingMachine.purchaseItem(itemSelected);
 
                     } else {
