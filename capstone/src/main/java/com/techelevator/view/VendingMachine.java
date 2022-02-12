@@ -2,6 +2,8 @@ package com.techelevator.view;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class VendingMachine {
@@ -11,6 +13,8 @@ public class VendingMachine {
     private Balance vendingBalance = new Balance(BigDecimal.ZERO);
 
     private Map<String, Item> inventory = new HashMap<>();
+
+    private Item item = new Item();
 
     public Balance getVendingBalance() {
         return vendingBalance;
@@ -80,4 +84,23 @@ public class VendingMachine {
             throw new IllegalArgumentException("Item does not exist");
         }
     }
+
+    public void logFile() {
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+
+        try (PrintWriter logFile = new PrintWriter(new FileWriter("log.txt", true))) {
+
+            String formattedDate = dateFormatter.format(LocalDateTime.now());
+            logFile.println(formattedDate + " " + item.getQuantity());
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error creating file");
+        } catch (IOException e) {
+            System.out.println("Caught an IOException. Message: " + e.getMessage());
+        }
+
+    }
+
+
 }

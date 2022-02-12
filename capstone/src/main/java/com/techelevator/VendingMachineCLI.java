@@ -34,6 +34,8 @@ public class VendingMachineCLI {
 
         vendingMachine.loadInventory();
 
+        vendingMachine.logFile();
+
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
             System.out.println();

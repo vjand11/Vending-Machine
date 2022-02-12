@@ -30,15 +30,16 @@ public class Balance {
     }
 
     public BigDecimal calculateChange(BigDecimal balanceRemaining) {
+
         BigDecimal quarters = (balanceRemaining.remainder(QUARTER));
         BigDecimal dimes = (quarters.remainder(DIME));
         BigDecimal nickels = (dimes.remainder(NICKEL));
         BigDecimal numQuarters = (balanceRemaining.subtract(quarters).divide(QUARTER));
-        BigDecimal numDimes = (numQuarters.subtract(dimes)).divide(DIME);
-        BigDecimal numNickels = (numDimes.subtract(nickels)).divide(NICKEL);
-        System.out.println("Number of quarters to return: " + quarters);
-        System.out.println("Number of dimes to return: " + dimes);
-        System.out.println("Number of nickels to return: " + nickels);
+        BigDecimal numDimes = ((quarters)).divide(DIME);
+        BigDecimal numNickels = ((dimes)).divide(NICKEL);
+        System.out.println("Number of quarters to return: " + numQuarters);
+        System.out.println("Number of dimes to return: " + numDimes);
+        System.out.println("Number of nickels to return: " + numNickels);
         return getBalance();
     }
 
