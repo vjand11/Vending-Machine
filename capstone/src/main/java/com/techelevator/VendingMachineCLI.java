@@ -2,8 +2,14 @@ package com.techelevator;
 
 import com.techelevator.view.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
@@ -34,7 +40,6 @@ public class VendingMachineCLI {
 
         vendingMachine.loadInventory();
 
-        vendingMachine.logFile();
 
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -42,6 +47,7 @@ public class VendingMachineCLI {
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
                 vendingMachine.displayItems();
+
                 // display vending machine items
 
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
@@ -54,7 +60,8 @@ public class VendingMachineCLI {
                     if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
                         System.out.print("How much money would you like to add? ");
                         BigDecimal feedMoneyMenuChoice = (BigDecimal) this.menu.getChoiceFromOptions(FEED_MONEY_MENU_OPTIONS);
-                        vendingMachine.getVendingBalance().addMoney(feedMoneyMenuChoice);
+                       // vendingMachine.getVendingBalance().addMoney(feedMoneyMenuChoice);
+                        vendingMachine.feedMoney(feedMoneyMenuChoice);
 
                        // vendingMachine.getVendingBalance().addMoney(BigDecimal.valueOf(Double.parseDouble(feedMoneyMenuChoice)));
 
@@ -80,6 +87,7 @@ public class VendingMachineCLI {
                 System.exit(0);
             }
         }
+
     }
 
     public static void main(String[] args) {
