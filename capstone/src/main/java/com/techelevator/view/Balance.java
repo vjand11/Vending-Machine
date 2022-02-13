@@ -11,12 +11,10 @@ import java.time.format.DateTimeFormatter;
 
 public class Balance {
 
-    private BigDecimal balance = BigDecimal.ZERO;
+    private BigDecimal balance;
     private static final BigDecimal QUARTER = BigDecimal.valueOf(0.25);
     private static final BigDecimal NICKEL = BigDecimal.valueOf(0.05);
     private static final BigDecimal DIME = BigDecimal.valueOf(0.10);
-    private static final BigDecimal HUNDRED = BigDecimal.valueOf(100.00);
-    private Item item = new Item();
 
     public Balance(BigDecimal balance) {
         this.balance = balance;
