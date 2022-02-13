@@ -1,6 +1,7 @@
 package com.techelevator.view;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Balance {
 
@@ -35,7 +36,7 @@ public class Balance {
         BigDecimal dimes = (quarters.remainder(DIME));
         BigDecimal nickels = (dimes.remainder(NICKEL));
         BigDecimal numQuarters = (balanceRemaining.subtract(quarters).divide(QUARTER));
-        BigDecimal numDimes = ((quarters)).divide(DIME);
+        BigDecimal numDimes = ((quarters)).divide(DIME, 0, RoundingMode.DOWN);
         BigDecimal numNickels = ((dimes)).divide(NICKEL);
         System.out.println("Number of quarters to return: " + numQuarters);
         System.out.println("Number of dimes to return: " + numDimes);
