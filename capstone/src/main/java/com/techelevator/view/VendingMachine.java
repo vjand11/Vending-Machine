@@ -92,6 +92,13 @@ public class VendingMachine {
         logFile(" FEED MONEY: ", begBal, newBal);
     }
 
+    public void giveChange(BigDecimal withdrawMoney) {
+        String begBal = vendingBalance.getBalance().toString();
+        vendingBalance.returnChange(withdrawMoney);
+        String newBal = vendingBalance.getBalance().toString();
+        logFile(" GIVE CHANGE ", begBal, newBal);
+    }
+
     public void logFile(String message, String startingBalance, String endingBalance) {
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");

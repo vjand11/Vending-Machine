@@ -80,6 +80,7 @@ public class VendingMachineCLI {
                         System.out.println("We are returning your change! ");
                         System.out.println(vendingMachine.getVendingBalance().calculateChange(currentBalance));
                         System.out.println("Your new balance is: $" + vendingMachine.getVendingBalance().returnChange(currentBalance));
+                        //vendingMachine.giveChange();
                         break;
                     }
                 }
