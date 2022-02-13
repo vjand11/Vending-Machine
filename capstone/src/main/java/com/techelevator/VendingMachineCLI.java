@@ -60,10 +60,10 @@ public class VendingMachineCLI {
                     if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
                         System.out.print("How much money would you like to add? ");
                         BigDecimal feedMoneyMenuChoice = (BigDecimal) this.menu.getChoiceFromOptions(FEED_MONEY_MENU_OPTIONS);
-                       // vendingMachine.getVendingBalance().addMoney(feedMoneyMenuChoice);
-                        vendingMachine.feedMoney(feedMoneyMenuChoice);
+                        vendingMachine.getVendingBalance().addMoney(feedMoneyMenuChoice);
+                        //vendingMachine.feedMoney(feedMoneyMenuChoice);
 
-                       // vendingMachine.getVendingBalance().addMoney(BigDecimal.valueOf(Double.parseDouble(feedMoneyMenuChoice)));
+                        // vendingMachine.getVendingBalance().addMoney(BigDecimal.valueOf(Double.parseDouble(feedMoneyMenuChoice)));
 
                     } else if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 
@@ -79,7 +79,8 @@ public class VendingMachineCLI {
                         System.out.println("Your current balance is $" + vendingMachine.getVendingBalance().getBalance());
                         System.out.println("We are returning your change! ");
                         System.out.println(vendingMachine.getVendingBalance().calculateChange(currentBalance));
-                        System.out.println("Your new balance is: $" + vendingMachine.getVendingBalance().returnChange(currentBalance));
+                        System.out.println("Your new balance is: " ); //vendingMachine.getVendingBalance().returnChange(currentBalance));
+                        System.out.println(vendingMachine.getVendingBalance().returnChange(currentBalance));
                         //vendingMachine.giveChange();
                         break;
                     }

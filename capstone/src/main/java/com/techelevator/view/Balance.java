@@ -1,7 +1,13 @@
 package com.techelevator.view;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Balance {
 
@@ -20,14 +26,20 @@ public class Balance {
     }
 
     public void addMoney(BigDecimal moneyAdded) {
+        String begBal = balance.toString();
         balance = balance.add(moneyAdded);
+        String newBal = balance.toString();
+        logFile(" FEED MONEY: $", begBal, newBal);
     }
 
     public void updateBalance(BigDecimal price) {
+        String begBal = balance.toString();
         if (balance.compareTo(price) >= 0) {
             balance = balance.subtract(price);
+            String newBal = balance.toString();
+            logFile(" Item selected ", begBal, newBal);
         } else
-        throw new IllegalArgumentException("You do not have enough money for purchase.");
+            throw new IllegalArgumentException("You do not have enough money for purchase.");
     }
 
     public BigDecimal calculateChange(BigDecimal balanceRemaining) {
@@ -45,8 +57,29 @@ public class Balance {
     }
 
     public BigDecimal returnChange(BigDecimal remainingBalance) {
+        String begBal = balance.toString();
         updateBalance(remainingBalance);
+        String endBal = balance.toString();
+        logFile(" GIVE CHANGE: $", begBal, endBal);
         return getBalance();
+    }
+
+    public void logFile(String message, String startingBalance, String endingBalance) {
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+
+        try (PrintWriter logFile = new PrintWriter(new FileWriter("log.txt", true))) {
+
+            String formattedDate = dateFormatter.format(LocalDateTime.now());
+
+            logFile.println(formattedDate + message + startingBalance + endingBalance);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error creating file");
+        } catch (IOException e) {
+            System.out.println("Caught an IOException. Message: " + e.getMessage());
+        }
+
     }
 
 

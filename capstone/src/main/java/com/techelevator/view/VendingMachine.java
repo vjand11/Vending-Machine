@@ -73,7 +73,7 @@ public class VendingMachine {
             if (inventory.get(slotSelected).getQuantity() > 0) {
                 inventory.get(slotSelected).dispense();
                 String noise = inventory.get(slotSelected).getSound();
-                getVendingBalance().updateBalance(inventory.get(slotSelected).getPrice());
+                vendingBalance.updateBalance(inventory.get(slotSelected).getPrice());
                 System.out.println(noise);
                 System.out.println("You have selected: " + inventory.get(slotSelected).getName() + " which costs: $" + inventory.get(slotSelected).getPrice());
                 //System.out.println("Your remaining money is: $" + getVendingBalance().updateBalance(inventory.get(slotSelected).getPrice()));
@@ -85,19 +85,29 @@ public class VendingMachine {
         }
     }
 
-    public void feedMoney(BigDecimal feedMoney) {
-        String begBal = vendingBalance.getBalance().toString();
-        vendingBalance.addMoney(feedMoney);
-        String newBal = vendingBalance.getBalance().toString();
-        logFile(" FEED MONEY: ", begBal, newBal);
-    }
+//    public void feedMoney(BigDecimal feedMoney) {
+//        String begBal = vendingBalance.getBalance().toString();
+//        vendingBalance.addMoney(feedMoney);
+//        String newBal = vendingBalance.getBalance().toString();
+//        logFile(" FEED MONEY: $", begBal, newBal);
+//    }
 
-    public void giveChange(BigDecimal withdrawMoney) {
-        String begBal = vendingBalance.getBalance().toString();
-        vendingBalance.returnChange(withdrawMoney);
-        String newBal = vendingBalance.getBalance().toString();
-        logFile(" GIVE CHANGE ", begBal, newBal);
-    }
+//    public void updateBal (BigDecimal price, String slotSelected) {
+//        String begBal = vendingBalance.getBalance().toString();
+//        if (vendingBalance.getBalance().compareTo(price) >= 0) {
+//            vendingBalance.getBalance().subtract(price);
+//            String newBal = vendingBalance.getBalance().toString();
+//            logFile("Item Selected: ", begBal, newBal);
+//        } else
+//            throw new IllegalArgumentException("You do not have enough money for purchase.");
+//    }
+//
+//    public void giveChange(BigDecimal withdrawMoney) {
+//        String begBal = vendingBalance.getBalance().toString();
+//        vendingBalance.returnChange(withdrawMoney);
+//        String newBal = vendingBalance.getBalance().toString();
+//        logFile(" GIVE CHANGE: $", begBal, newBal);
+//    }
 
     public void logFile(String message, String startingBalance, String endingBalance) {
 
