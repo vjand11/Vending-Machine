@@ -1,5 +1,6 @@
 02/12/2022 04:46:17 PM - Program started
 02/12/2022 04:56:51 PM 5
+<<<<<<< HEAD
 02/12/2022 09:22:09 PM 5
 02/12/2022 09:24:19 PM 5
 02/12/2022 09:24:45 PM 5
@@ -17,3 +18,12 @@
 02/12/2022 09:32:03 PM 5
 02/12/2022 09:32:20 PM 5
 02/12/2022 09:32:42 PM 5
+=======
+02/12/2022 05:32:55 PM com.techelevator.view.Balance@2b2948e2 {D1=com.techelevator.view.Gum@6ddf90b0, C1=com.techelevator.view.Drinks@57536d79, D2=com.techelevator.view.Gum@3b0143d3, B1=com.techelevator.view.Candy@5a8e6209, C2=com.techelevator.view.Drinks@4b4523f8, D3=com.techelevator.view.Gum@731a74c, A1=com.techelevator.view.Chips@369f73a2, B2=com.techelevator.view.Candy@1f28c152, C3=com.techelevator.view.Drinks@7d907bac, D4=com.techelevator.view.Gum@7791a895, A2=com.techelevator.view.Chips@3a5ed7a6, B3=com.techelevator.view.Candy@6325a3ee, C4=com.techelevator.view.Drinks@1d16f93d, A3=com.techelevator.view.Chips@67b92f0a, B4=com.techelevator.view.Candy@2b9627bc, A4=com.techelevator.view.Chips@65e2dbf3}
+02/12/2022 05:38:58 PM 
+02/12/2022 05:40:03 PM 
+02/12/2022 05:40:08 PM 
+02/12/2022 05:40:11 PM 
+02/12/2022 05:43:19 PM com.techelevator.view.VendingMachine@3632be31
+02/12/2022 06:30:55 PMFEED MONEY: 05.0
+>>>>>>> 85585017527c70b75c6729f2a4b5e2f0d66e1a1f

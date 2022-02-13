@@ -85,14 +85,22 @@ public class VendingMachine {
         }
     }
 
-    public void logFile() {
+    public void feedMoney(BigDecimal feedMoney) {
+        String begBal = vendingBalance.getBalance().toString();
+        vendingBalance.addMoney(feedMoney);
+        String newBal = vendingBalance.getBalance().toString();
+        logFile(" FEED MONEY: ", begBal, newBal);
+    }
+
+    public void logFile(String message, String startingBalance, String endingBalance) {
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
 
         try (PrintWriter logFile = new PrintWriter(new FileWriter("log.txt", true))) {
 
             String formattedDate = dateFormatter.format(LocalDateTime.now());
-            logFile.println(formattedDate + " " + item.getQuantity());
+
+            logFile.println(formattedDate + message + startingBalance + endingBalance);
 
         } catch (FileNotFoundException e) {
             System.out.println("Error creating file");
