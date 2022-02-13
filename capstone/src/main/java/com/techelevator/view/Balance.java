@@ -16,6 +16,7 @@ public class Balance {
     private static final BigDecimal NICKEL = BigDecimal.valueOf(0.05);
     private static final BigDecimal DIME = BigDecimal.valueOf(0.10);
     private static final BigDecimal HUNDRED = BigDecimal.valueOf(100.00);
+    private Item item = new Item();
 
     public Balance(BigDecimal balance) {
         this.balance = balance;
@@ -29,7 +30,7 @@ public class Balance {
         String begBal = balance.toString();
         balance = balance.add(moneyAdded);
         String newBal = balance.toString();
-        logFile(" FEED MONEY: $", begBal, newBal);
+        logFile(" FEED MONEY:", begBal, newBal);
     }
 
     public void updateBalance(BigDecimal price) {
@@ -37,7 +38,7 @@ public class Balance {
         if (balance.compareTo(price) >= 0) {
             balance = balance.subtract(price);
             String newBal = balance.toString();
-            logFile(" Item selected ", begBal, newBal);
+            logFile(" Item Selected", begBal, newBal);
         } else
             throw new IllegalArgumentException("You do not have enough money for purchase.");
     }
@@ -53,6 +54,7 @@ public class Balance {
         System.out.println("Number of quarters to return: " + numQuarters);
         System.out.println("Number of dimes to return: " + numDimes);
         System.out.println("Number of nickels to return: " + numNickels);
+        System.out.println("Total change returned: ");
         return getBalance();
     }
 
@@ -60,7 +62,7 @@ public class Balance {
         String begBal = balance.toString();
         updateBalance(remainingBalance);
         String endBal = balance.toString();
-        logFile(" GIVE CHANGE: $", begBal, endBal);
+        logFile(" GIVE CHANGE:", begBal, endBal);
         return getBalance();
     }
 
@@ -72,7 +74,7 @@ public class Balance {
 
             String formattedDate = dateFormatter.format(LocalDateTime.now());
 
-            logFile.println(formattedDate + message + startingBalance + endingBalance);
+            logFile.println(formattedDate + message + " $" + startingBalance + " $" + endingBalance);
 
         } catch (FileNotFoundException e) {
             System.out.println("Error creating file");

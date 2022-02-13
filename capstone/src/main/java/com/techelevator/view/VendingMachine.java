@@ -85,47 +85,9 @@ public class VendingMachine {
         }
     }
 
-//    public void feedMoney(BigDecimal feedMoney) {
-//        String begBal = vendingBalance.getBalance().toString();
-//        vendingBalance.addMoney(feedMoney);
-//        String newBal = vendingBalance.getBalance().toString();
-//        logFile(" FEED MONEY: $", begBal, newBal);
-//    }
 
-//    public void updateBal (BigDecimal price, String slotSelected) {
-//        String begBal = vendingBalance.getBalance().toString();
-//        if (vendingBalance.getBalance().compareTo(price) >= 0) {
-//            vendingBalance.getBalance().subtract(price);
-//            String newBal = vendingBalance.getBalance().toString();
-//            logFile("Item Selected: ", begBal, newBal);
-//        } else
-//            throw new IllegalArgumentException("You do not have enough money for purchase.");
-//    }
-//
-//    public void giveChange(BigDecimal withdrawMoney) {
-//        String begBal = vendingBalance.getBalance().toString();
-//        vendingBalance.returnChange(withdrawMoney);
-//        String newBal = vendingBalance.getBalance().toString();
-//        logFile(" GIVE CHANGE: $", begBal, newBal);
-//    }
 
-    public void logFile(String message, String startingBalance, String endingBalance) {
 
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
-
-        try (PrintWriter logFile = new PrintWriter(new FileWriter("log.txt", true))) {
-
-            String formattedDate = dateFormatter.format(LocalDateTime.now());
-
-            logFile.println(formattedDate + message + startingBalance + endingBalance);
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Error creating file");
-        } catch (IOException e) {
-            System.out.println("Caught an IOException. Message: " + e.getMessage());
-        }
-
-    }
 
 
 }
