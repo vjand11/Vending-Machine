@@ -73,6 +73,17 @@ public class BalanceTests {
         Assert.assertEquals(BigDecimal.valueOf(0.0),result);
     }
 
+    @Test
+    public void add_correct_dollar_value() {
+        //Arrange
+        BigDecimal testValue = BigDecimal.valueOf(1.00);
+        Balance testBalance = new Balance(testValue);
+        //Act
+//        BigDecimal result = testBalance.addMoney(testValue);
+        //Assert
+        Assert.assertEquals(BigDecimal.valueOf(0.0), 0);
+    }
+
 
 
 
