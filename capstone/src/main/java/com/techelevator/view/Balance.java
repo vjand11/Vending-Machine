@@ -58,7 +58,7 @@ public class Balance {
 
     public BigDecimal returnChange(BigDecimal remainingBalance) {
         String begBal = balance.toString();
-        updateBalance(remainingBalance);
+        balance = balance.subtract(remainingBalance);
         String endBal = balance.toString();
         logFile(" GIVE CHANGE:", begBal, endBal);
         return getBalance();
