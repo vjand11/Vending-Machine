@@ -14,8 +14,6 @@ public class VendingMachine {
 
     private Map<String, Item> inventory = new HashMap<>();
 
-    private Item item = new Item();
-
     public Balance getVendingBalance() {
         return vendingBalance;
     }

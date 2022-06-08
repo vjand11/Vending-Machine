@@ -36,12 +36,14 @@ public class VendingMachineCLI {
     public void run() {
 
         vendingMachine.loadInventory();
+        System.out.println();
+        System.out.println("*******************************");
+        System.out.println("Welcome to the Vending Machine!");
+        System.out.println("*******************************");
 
         while (true) {
             System.out.println();
-            System.out.println("**************************************************************");
-            System.out.println("Welcome to the Vending Machine! Please select an option below.");
-            System.out.println("**************************************************************");
+            System.out.println("Please select from the menu below:");
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
             System.out.println();
 
