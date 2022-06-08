@@ -41,7 +41,7 @@ public class Balance {
         }
     }
 
-    public BigDecimal calculateChange(BigDecimal balanceRemaining) {
+    public void calculateChange(BigDecimal balanceRemaining) {
 
         BigDecimal quarters = (balanceRemaining.remainder(QUARTER));
         BigDecimal dimes = (quarters.remainder(DIME));
@@ -49,19 +49,18 @@ public class Balance {
         BigDecimal numQuarters = (balanceRemaining.subtract(quarters).divide(QUARTER));
         BigDecimal numDimes = ((quarters)).divide(DIME, 0, RoundingMode.DOWN);
         BigDecimal numNickels = ((dimes)).divide(NICKEL);
+        System.out.println("...returning change...");
         System.out.println("Number of quarters to return: " + numQuarters);
         System.out.println("Number of dimes to return: " + numDimes);
         System.out.println("Number of nickels to return: " + numNickels);
-        System.out.println("Total change returned: ");
-        return getBalance();
     }
 
-    public BigDecimal returnChange(BigDecimal remainingBalance) {
+    public void returnChange(BigDecimal remainingBalance) {
         String begBal = balance.toString();
         balance = balance.subtract(remainingBalance);
         String endBal = balance.toString();
         logFile("GIVE CHANGE:", begBal, endBal);
-        return getBalance();
+        System.out.println("Your balance is now: $" + endBal);
     }
 
     public void logFile(String message, String startingBalance, String endingBalance) {

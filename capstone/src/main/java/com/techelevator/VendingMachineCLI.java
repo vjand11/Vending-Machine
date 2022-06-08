@@ -35,6 +35,7 @@ public class VendingMachineCLI {
 
     public void run() {
 
+
         vendingMachine.loadInventory();
         System.out.println();
         System.out.println("*******************************");
@@ -54,11 +55,14 @@ public class VendingMachineCLI {
 
                 while (true) {
 
-                    System.out.println("Current Money Provided: $" + vendingMachine.getVendingBalance().getBalance());
+                    BigDecimal currentBalance = vendingMachine.getVendingBalance().getBalance();
+
+                    System.out.println();
+                    System.out.println("Current Balance: $" + currentBalance);
                     String purchaseMenuChoice = (String) this.menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 
                     if (purchaseMenuChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-                        System.out.print("How much money would you like to add? ");
+                        System.out.print("How much money would you like to add?");
                         BigDecimal feedMoneyMenuChoice = (BigDecimal) this.menu.getChoiceFromOptions(FEED_MONEY_MENU_OPTIONS);
                         vendingMachine.getVendingBalance().addMoney(feedMoneyMenuChoice);
 
@@ -72,12 +76,10 @@ public class VendingMachineCLI {
                         vendingMachine.purchaseItem(itemSelected);
 
                     } else {
-                        BigDecimal currentBalance = vendingMachine.getVendingBalance().getBalance();
-                        System.out.println("Your current balance is $" + vendingMachine.getVendingBalance().getBalance());
-                        System.out.println("We are returning your change! ");
-                        System.out.println(vendingMachine.getVendingBalance().calculateChange(currentBalance));
-                        System.out.println("Your new balance is: ");
-                        System.out.println(vendingMachine.getVendingBalance().returnChange(currentBalance));
+                        System.out.println();
+                        System.out.println("Your current balance is: $" + currentBalance);
+                        vendingMachine.getVendingBalance().calculateChange(currentBalance);
+                        vendingMachine.getVendingBalance().returnChange(currentBalance);
                         break;
                     }
                 }

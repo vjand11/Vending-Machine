@@ -55,36 +55,37 @@ public class VendingMachine {
     public void displayItems() {
 
         for (Map.Entry<String, Item> pair : inventory.entrySet()) {
-            System.out.println(pair.getKey() + " " + pair.getValue().getName() + " $" + pair.getValue().getPrice() + " " + pair.getValue().getQuantity() + " available");
+            if (pair.getValue().getQuantity() <= 0) {
+                System.out.println(pair.getKey() + " | " + pair.getValue().getName() + " | $" + pair.getValue().getPrice() + " | Item SOLD OUT");
+            } else {
+                System.out.println(pair.getKey() + " | " + pair.getValue().getName() + " | $" + pair.getValue().getPrice() + " | " + pair.getValue().getQuantity() + " available");
+            }
         }
     }
 
     public void purchaseItem(String slotSelected) {
-        /*
-        try to get item
-        if does not exist thrown exception
-        do we have enough to sell more?
-            if no throw an exception
-        if yes, decrement inventory item.dispense and play sound
-         */
 
         if (inventory.containsKey(slotSelected)) {
-            if (inventory.get(slotSelected).getQuantity() > 0 && vendingBalance.getBalance().compareTo(inventory.get(slotSelected).getPrice()) > 0) {
+            int quantity = inventory.get(slotSelected).getQuantity();
+            BigDecimal userBalance = vendingBalance.getBalance();
+            BigDecimal itemPrice = inventory.get(slotSelected).getPrice();
+
+            if (quantity > 0 && userBalance.compareTo(itemPrice) > 0) {
                 inventory.get(slotSelected).dispense();
-                vendingBalance.logFile(inventory.get(slotSelected).getName(),vendingBalance.getBalance().toString(),
-                        vendingBalance.getBalance().subtract(inventory.get(slotSelected).getPrice()).toString());
-                vendingBalance.updateBalance(inventory.get(slotSelected).getPrice());
+                vendingBalance.logFile(inventory.get(slotSelected).getName(), userBalance.toString(),
+                        userBalance.subtract(itemPrice).toString());
+                vendingBalance.updateBalance(itemPrice);
                 System.out.println(inventory.get(slotSelected).getSound());
-                System.out.println("You have selected: " + inventory.get(slotSelected).getName() + " which costs: $" + inventory.get(slotSelected).getPrice());
-            } else if (inventory.get(slotSelected).getQuantity() > 0 && vendingBalance.getBalance().compareTo(inventory.get(slotSelected).getPrice()) < 0) {
-                System.out.println("You do not have enough money to buy the selected item");
-                System.out.println("Add additional funds or select another item");
-            } else if (inventory.get(slotSelected).getQuantity() < 1) {
+                System.out.println("You selected: " + inventory.get(slotSelected).getName() + " which costs: $" + itemPrice);
+            } else if (quantity > 0 && userBalance.compareTo(itemPrice) < 0) {
+                System.out.println("You don't have enough money to buy this item");
+                System.out.println("Please add additional funds or select another item");
+            } else if (quantity < 1) {
                 System.out.println("Item is sold out");
             }
 
+        } else {
+            System.out.println("Invalid input, please try again");
         }
     }
-
-
 }
