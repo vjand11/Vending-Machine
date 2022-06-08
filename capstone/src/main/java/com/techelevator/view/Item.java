@@ -21,7 +21,6 @@ public class Item {
     public Item() {
     }
 
-
     public String getSlot() {
         return slot;
     }

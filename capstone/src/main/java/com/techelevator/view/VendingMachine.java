@@ -8,7 +8,7 @@ import java.util.*;
 
 public class VendingMachine {
 
-    private final File inputFile = new File("/Users/VA/repos/Vending-Machine/capstone/vendingmachine.csv");
+    private final File inputFile = new File("C:\\Users\\VANDERSO\\OneDrive - Insight\\Documents\\Projects\\repos\\Vending-Machine\\capstone\\vendingmachine.csv");
 
     private Balance vendingBalance = new Balance(BigDecimal.ZERO);
 
