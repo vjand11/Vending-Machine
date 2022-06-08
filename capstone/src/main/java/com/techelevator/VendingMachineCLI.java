@@ -38,7 +38,7 @@ public class VendingMachineCLI {
         vendingMachine.loadInventory();
         System.out.println();
         System.out.println("*******************************");
-        System.out.println("Welcome to the Vending Machine!");
+        System.out.println("Welcome to the Vendo-Matic 800!");
         System.out.println("*******************************");
 
         while (true) {
@@ -83,7 +83,7 @@ public class VendingMachineCLI {
                 }
             } else {
                 System.out.println("**************************************************");
-                System.out.println("Thank you for using this Vending Machine, goodbye!");
+                System.out.println("Thank you for using the Vendo-Matic 800, goodbye!");
                 System.out.println("**************************************************");
                 System.exit(0);
             }

@@ -28,21 +28,17 @@ public class Balance {
         String begBal = balance.toString();
         balance = balance.add(moneyAdded);
         String newBal = balance.toString();
-        logFile(" FEED MONEY:", begBal, newBal);
+        logFile("FEED MONEY:", begBal, newBal);
     }
 
     public void updateBalance(BigDecimal price) {
-       // try {
             String begBal = balance.toString();
             if (balance.compareTo(price) >= 0) {
                 balance = balance.subtract(price);
                 String newBal = balance.toString();
-                logFile(" Item Selected", begBal, newBal);
             } else {
                 System.out.println("You do not have enough money for purchase.");
-        } //catch (Exception e) {
-          //  System.out.println("You do not have enough money for purchase.");
-       // }
+        }
     }
 
     public BigDecimal calculateChange(BigDecimal balanceRemaining) {
@@ -64,7 +60,7 @@ public class Balance {
         String begBal = balance.toString();
         balance = balance.subtract(remainingBalance);
         String endBal = balance.toString();
-        logFile(" GIVE CHANGE:", begBal, endBal);
+        logFile("GIVE CHANGE:", begBal, endBal);
         return getBalance();
     }
 
@@ -76,7 +72,7 @@ public class Balance {
 
             String formattedDate = dateFormatter.format(LocalDateTime.now());
 
-            logFile.println(formattedDate + message + " $" + startingBalance + " $" + endingBalance);
+            logFile.println(formattedDate + " " + message + " $" + startingBalance + " $" + endingBalance);
 
         } catch (FileNotFoundException e) {
             System.out.println("Error creating file");

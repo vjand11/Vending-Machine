@@ -71,6 +71,8 @@ public class VendingMachine {
         if (inventory.containsKey(slotSelected)) {
             if (inventory.get(slotSelected).getQuantity() > 0 && vendingBalance.getBalance().compareTo(inventory.get(slotSelected).getPrice()) > 0) {
                 inventory.get(slotSelected).dispense();
+                vendingBalance.logFile(inventory.get(slotSelected).getName(),vendingBalance.getBalance().toString(),
+                        vendingBalance.getBalance().subtract(inventory.get(slotSelected).getPrice()).toString());
                 vendingBalance.updateBalance(inventory.get(slotSelected).getPrice());
                 System.out.println(inventory.get(slotSelected).getSound());
                 System.out.println("You have selected: " + inventory.get(slotSelected).getName() + " which costs: $" + inventory.get(slotSelected).getPrice());
