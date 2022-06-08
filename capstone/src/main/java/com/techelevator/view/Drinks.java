@@ -6,9 +6,9 @@ import java.util.List;
 public class Drinks extends Item {
 
     public Drinks(String slot, String name, BigDecimal price) {
-        super(slot, 5, name, price, "Glug Glug, Yum!");
+        super(slot, 5, name, price);
     }
-
+    @Override
     public String getSound() {
         return "Glug Glug, Yum!";
     }

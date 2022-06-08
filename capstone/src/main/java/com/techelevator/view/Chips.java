@@ -9,9 +9,10 @@ import java.util.Map;
 public class Chips extends Item {
 
     public Chips(String slot, String name, BigDecimal price) {
-        super(slot, 5, name, price, "Crunch Crunch, Yum!");
+        super(slot, 5, name, price);
     }
 
+    @Override
     public String getSound() {
         return "Crunch Crunch, Yum!";
     }

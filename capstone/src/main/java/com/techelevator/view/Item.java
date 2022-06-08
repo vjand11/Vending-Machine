@@ -10,12 +10,11 @@ public class Item {
     String sound;
 
 
-    public Item(String slot, int quantity, String name, BigDecimal price, String sound) {
+    public Item(String slot, int quantity, String name, BigDecimal price) {
         this.slot = slot;
         this.quantity = quantity;
         this.name = name;
         this.price = price;
-        this.sound = sound;
     }
 
     public Item() {

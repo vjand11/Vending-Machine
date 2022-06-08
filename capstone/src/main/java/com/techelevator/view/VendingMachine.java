@@ -72,9 +72,8 @@ public class VendingMachine {
         if (inventory.containsKey(slotSelected)) {
             if (inventory.get(slotSelected).getQuantity() > 0) {
                 inventory.get(slotSelected).dispense();
-                String noise = inventory.get(slotSelected).getSound();
                 vendingBalance.updateBalance(inventory.get(slotSelected).getPrice());
-                System.out.println(noise);
+                System.out.println(inventory.get(slotSelected).getSound());
                 System.out.println("You have selected: " + inventory.get(slotSelected).getName() + " which costs: $" + inventory.get(slotSelected).getPrice());
 
             } else {
