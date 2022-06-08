@@ -7,7 +7,7 @@ public class Item {
     private int quantity = 5;
     private String name;
     private BigDecimal price = BigDecimal.ZERO;
-    String sound;
+    private String sound;
 
 
     public Item(String slot, int quantity, String name, BigDecimal price) {

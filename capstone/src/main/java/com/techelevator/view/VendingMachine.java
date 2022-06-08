@@ -67,24 +67,22 @@ public class VendingMachine {
             if no throw an exception
         if yes, decrement inventory item.dispense and play sound
          */
+
         if (inventory.containsKey(slotSelected)) {
-            if (inventory.get(slotSelected).getQuantity() > 0) {
+            if (inventory.get(slotSelected).getQuantity() > 0 && vendingBalance.getBalance().compareTo(inventory.get(slotSelected).getPrice()) > 0) {
                 inventory.get(slotSelected).dispense();
                 vendingBalance.updateBalance(inventory.get(slotSelected).getPrice());
                 System.out.println(inventory.get(slotSelected).getSound());
                 System.out.println("You have selected: " + inventory.get(slotSelected).getName() + " which costs: $" + inventory.get(slotSelected).getPrice());
-
-            } else {
-                throw new IllegalArgumentException("SOLD OUT");
+            } else if (inventory.get(slotSelected).getQuantity() > 0 && vendingBalance.getBalance().compareTo(inventory.get(slotSelected).getPrice()) < 0) {
+                System.out.println("You do not have enough money to buy the selected item");
+                System.out.println("Add additional funds or select another item");
+            } else if (inventory.get(slotSelected).getQuantity() < 1) {
+                System.out.println("Item is sold out");
             }
-        } else {
-            throw new IllegalArgumentException("Item does not exist");
+
         }
     }
-
-
-
-
 
 
 }
